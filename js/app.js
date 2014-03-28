@@ -27,13 +27,25 @@ app.factory("TodoListService",function(StorageService){
         list = [];
 
         for (index in data) {
-          list.push ({
-            text: data[index].text,
-            done: data[index].done
-          });
-        }
+          item = data[index];
 
-        StorageService.set("TodoList", list);
+          if (item.type === "text") {
+            list.push ({
+               text: item.text,
+               done: item.done,
+               type: item.type
+            });
+
+          }
+          else if (item.type === 'location') {
+              list.push ({
+                longitude: item.longitude,
+                latitude:  item.latitude,
+                type:      item.type
+              });
+          }
+          
+          StorageService.set("TodoList", list);
     },
     load: function(){
         return StorageService.get("TodoList");
