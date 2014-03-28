@@ -35,12 +35,12 @@
       <section data-type="list">
         <ul data-type="edit">
          <li ng-repeat = "todo in todos">
-          <label class="pack-checkbox danger">
+          <label class="pack-checkbox danger" >
             <input type="checkbox" ng-model="todo.done">
               <span class="done-{{todo.done}}"></span>
           </label>
           <a href="#">
-            <p>{{todo.text}}</p>
+            <p>{{todo.text}}{{todo.latitude}} {{todo.longitude}}</p>
           </a>
           <aside class="pack-end">
             <button ng-click="deleteTodo($index)">

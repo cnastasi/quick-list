@@ -51,17 +51,18 @@ app.factory("TodoListService",function(StorageService){
                done: item.done,
                type: item.type
             });
-
-          }
-          else if (item.type === 'location') {
+          }else if (item.type === 'location') {
               list.push ({
                 longitude: item.longitude,
                 latitude:  item.latitude,
                 type:      item.type
               });
           }
+
+        }
           
-          StorageService.set("TodoList", list);
+          
+        StorageService.set("TodoList", list);
     },
     load: function(){
         return StorageService.get("TodoList");
@@ -77,9 +78,17 @@ app.controller("TodoController",function($scope,TodoListService, Geolocalization
       $scope.todos = [{text:'Fire',done:true}];
     }
     $scope.addTodo = function() {
-      $scope.todos.push({text:$scope.text, done:false, type:"text"});
+      $scope.todos.push({
+        text:$scope.text, 
+        done:false, 
+        type:"text"
+      });
       $scope.text = '';
       TodoListService.save($scope.todos);
+    };
+
+    $scope.isText = function (item) {
+      return item == "text";
     };
 
     $scope.geolocalize = function () {
@@ -121,5 +130,16 @@ app.controller("TodoController",function($scope,TodoListService, Geolocalization
     };
 
 });
+/**
+app.directive("ListItem", function (){
+    return {
+        restrict: "A",
+        link: function (scope, element, attribute) {
+          element.text (JSON.stringify(scope));
+          //if (scope.type === 'text') {
 
-app.controller("MapController",function($scope))
+          //}
+        }
+    };
+});
+*/
