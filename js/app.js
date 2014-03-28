@@ -1,5 +1,21 @@
 var app = angular.module("quicklist", []);
 
+app.config(function($routeProvider) {
+
+  $routeProvider.when('/home', {
+    templateUrl: 'index.html',
+    controller: 'TodoController'
+  });
+
+  $routeProvider.when('/map', {
+    templateUrl: 'map.html',
+    controller: 'MapController'
+  });
+  
+
+  $routeProvider.otherwise({ redirectTo: '/login' });
+
+});
 
 app.factory("StorageService",function(){
   return{
@@ -88,3 +104,5 @@ app.controller("TodoController",function($scope,TodoListService, Geolocalization
     };
 
 });
+
+app.controller("MapController",function($scope))
