@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html ng-app = "FirefoxOSApp">
+  <head>
+    <meta charset="utf-8">
+    <title>My App</title>
+
+    <!-- App styles -->
+    <link rel="stylesheet" type="text/css" href="style/app.css">
+    <link href="building_blocks/style/headers.css" rel="stylesheet" type="text/css">
+    <link href="building_blocks/icons/styles/media_icons.css" rel="stylesheet" type="text/css">
+    <link href="building_blocks/style/lists.css" rel="stylesheet" type="text/css">
+
+    <script defer src="js/angular.js"></script>
+    <script defer src="js/app.js"></script>
+  </head>
+
+  <body>
+  <section role="region">
+  <header>
+    <menu type="toolbar">
+      <a href="#"><span class="media-icon media-play">Play</span></a>
+    </menu>
+    <h1>App Milano</h1>
+  </header>
+  </section>
+  <section data-type="list">
+  <header>Title</header>
+  <ul ng-controller = "SearchController">
+   
+ <!--   <li ng-repeat ="user in users">
+      <aside class="pack-end">
+        <img alt="placeholder" src="myimage.jpg">
+      </aside>
+      <a href="#">
+        <p>{{user.firstName}}</p>
+        <p>{{user.lastName}}</p>
+      </a>
+    </li> -->
+    <li ng-repeat ="article in news">
+      <aside class="pack-end">
+        <img alt="placeholder" src="myimage.jpg">
+      </aside>
+      <a href="#">
+        <p>{{article.title}}</p>
+        <p>{{article.description}}</p>
+      </a>
+    </li>
+  </ul>
+  </section>
+  </body>
+</html>

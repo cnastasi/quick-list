@@ -1,0 +1,17 @@
+{
+  "name": "FirefoxOSApp",
+  "description": "Songs",
+  "launch_path": "/index.html",
+  "orientation": "portrait",
+  "developer": {
+    "name": "Marco Predari",
+    "url": ""
+  },
+  "icons": {
+    "60": "/icons/60.jpg",
+    "128": "/icons/128.jpg"
+  },
+  "permissions": {
+    "systemXHR" : {}
+  }
+}
