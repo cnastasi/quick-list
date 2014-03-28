@@ -49,7 +49,7 @@ app.controller("TodoController",function($scope,TodoListService, Geolocalization
       $scope.todos = [{text:'Fire',done:true}];
     }
     $scope.addTodo = function() {
-      $scope.todos.push({text:$scope.text, done:false});
+      $scope.todos.push({text:$scope.text, done:false, type:"text"});
       $scope.text = '';
       TodoListService.save($scope.todos);
     };
@@ -57,7 +57,15 @@ app.controller("TodoController",function($scope,TodoListService, Geolocalization
     $scope.geolocalize = function () {
         GeolocalizationService.getPosition (function (position){
             //console.log (position);
-            alert('Lat:' + position.coords.latitude + ' Long: ' + position.coords.longitude);
+            //alert('Lat: ' + position.coords.latitude + ' Long: ' + position.coords.longitude);
+            //url = "https://www.google.it/maps?t=m&ll=" + position.coords.latitude + "," + position.coords.longitude + "&z=20&output=classic";
+
+            text = 'Lat: ' + position.coords.latitude + ' Long: ' + position.coords.longitude;
+
+            $scope.todos.push({text: text, done: false, type:'location'}); 
+            $scope.$apply();
+
+            TodoListService.save($scope.todos);
         }, 
         function ()  {
           alert("Error!");
