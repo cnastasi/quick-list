@@ -1,10 +1,10 @@
 {
-  "name": "FirefoxOSApp",
-  "description": "Songs",
+  "name": "Quick Link",
+  "description": "Quick List",
   "launch_path": "/index.html",
   "orientation": "portrait",
   "developer": {
-    "name": "Marco Predari",
+    "name": "Marco Predari & Christian Nastasi & Glody Fimpa",
     "url": ""
   },
   "icons": {
@@ -12,6 +12,6 @@
     "128": "/icons/128.jpg"
   },
   "permissions": {
-    "systemXHR" : {}
+    "systemXHR": {}
   }
 }

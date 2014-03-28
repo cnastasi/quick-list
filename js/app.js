@@ -41,7 +41,7 @@ app.factory("TodoListService",function(StorageService){
   };
 });
 
-app.controller("TodoController",function($scope,TodoListService){
+app.controller("TodoController",function($scope,TodoListService, GeolocalizationService) {
     try{
       $scope.todos = TodoListService.load();
     }
@@ -52,6 +52,16 @@ app.controller("TodoController",function($scope,TodoListService){
       $scope.todos.push({text:$scope.text, done:false});
       $scope.text = '';
       TodoListService.save($scope.todos);
+    };
+
+    $scope.geolocalize = function () {
+        GeolocalizationService.getPosition (function (position){
+            //console.log (position);
+            alert('Lat:' + position.coords.latitude + ' Long: ' + position.coords.longitude);
+        }, 
+        function ()  {
+          alert("Error!");
+        });
     };
 
     $scope.archive = function() {

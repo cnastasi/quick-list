@@ -8,19 +8,24 @@
     <link rel="stylesheet" type="text/css" href="style/app.css">
     <link href="building_blocks/style/headers.css" rel="stylesheet" type="text/css">
     <link href="building_blocks/style/action_icons.css" rel="stylesheet" type="text/css">
+    <link href="building_blocks/style/icons.css" rel="stylesheet" type="text/css">
     <link href="building_blocks/style/switches.css" rel="stylesheet" type="text/css">
     <link href="building_blocks/style/lists.css" rel="stylesheet" type="text/css">
 
     <script defer src="js/angular.js"></script>
     <script defer src="js/app.js"></script>
     <script defer src="js/services.js"></script>
+
+    <meta name="viewport" content="width=device-width, user-scalable=no">
   </head>
   <body>
     <div ng-controller = "TodoController">
       <section role="region">
         <header>
           <menu type="toolbar">
-            <button ng-click="addTodo()"><span class="icon icon-add">user</span></button>
+            <a ng-click="geolocalize()">gps</a>
+            <a ng-click="addTodo()"><span class="icon icon-add">user</span></a>
+            
           </menu>
           <form action="#">
             <input type="text" placeholder="Add new task" required="required" ng-model="text">
