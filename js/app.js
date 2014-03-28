@@ -40,8 +40,8 @@ app.controller("TodoController",function($scope,TodoListService){
       $scope.todos = [{text:'Fire',done:true}];
     }
     $scope.addTodo = function() {
-      $scope.todos.push({text:$scope.todoText, done:false});
-      $scope.todoText = '';
+      $scope.todos.push({text:$scope.text, done:false});
+      $scope.text = '';
       TodoListService.save($scope.todos);
     };
 
