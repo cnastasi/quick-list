@@ -24,7 +24,16 @@ app.factory("StorageService",function(){
 app.factory("TodoListService",function(StorageService){
   return{
     save: function(data){
-        StorageService.set("TodoList",data);
+        list = [];
+
+        for (index in data) {
+          list.push ({
+            text: data[index].text,
+            done: data[index].done
+          });
+        }
+
+        StorageService.set("TodoList", list);
     },
     load: function(){
         return StorageService.get("TodoList");
