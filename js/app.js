@@ -43,13 +43,25 @@ app.factory("TodoListService",function(StorageService){
         list = [];
 
         for (index in data) {
-          list.push ({
-            text: data[index].text,
-            done: data[index].done
-          });
-        }
+          item = data[index];
 
-        StorageService.set("TodoList", list);
+          if (item.type === "text") {
+            list.push ({
+               text: item.text,
+               done: item.done,
+               type: item.type
+            });
+
+          }
+          else if (item.type === 'location') {
+              list.push ({
+                longitude: item.longitude,
+                latitude:  item.latitude,
+                type:      item.type
+              });
+          }
+          
+          StorageService.set("TodoList", list);
     },
     load: function(){
         return StorageService.get("TodoList");
@@ -76,9 +88,14 @@ app.controller("TodoController",function($scope,TodoListService, Geolocalization
             //alert('Lat: ' + position.coords.latitude + ' Long: ' + position.coords.longitude);
             //url = "https://www.google.it/maps?t=m&ll=" + position.coords.latitude + "," + position.coords.longitude + "&z=20&output=classic";
 
-            text = 'Lat: ' + position.coords.latitude + ' Long: ' + position.coords.longitude;
+            //text = 'Lat: ' + position.coords.latitude + ' Long: ' + position.coords.longitude;
 
-            $scope.todos.push({text: text, done: false, type:'location'}); 
+            $scope.todos.push({
+              longitude: position.coords.longitude, 
+              latitude: position.coords.latitude,
+              type:'location'
+            });
+             
             $scope.$apply();
 
             TodoListService.save($scope.todos);
