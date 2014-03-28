@@ -42,7 +42,11 @@
           <a href="#">
             <p>{{todo.text}}</p>
           </a>
-
+          <aside class="pack-end">
+            <button ng-click="deleteTodo($index)">
+                <div></div>
+            </button>
+          </aside>
          </li>
         </ul>
 </section>
