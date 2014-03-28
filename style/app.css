@@ -5,3 +5,30 @@ html, body {
   margin: 0;
   padding: 0;
 }
+.delete-tag{
+	color:red !important;
+	font-size: 1.1rem !important;
+}
+[data-type="list"] aside {
+    height: 100%;
+    position: absolute !important;
+    float: clear !important;
+    z-index: 2;
+    background: red;
+    right: 4rem ;
+    top: 0 !important;
+}
+[data-type="list"] aside button {
+	height: 100%;
+	width: 5rem;
+	background: #F97C17;
+	border: none;
+}
+[data-type="list"] aside button div {
+	height: 100%;
+	width: 3rem;
+	background-image: url('../building_blocks/style/headers/images/icons/add.png');
+	background-repeat: no-repeat;
+	background-position: center;
+	transform:rotate(45deg);
+}
