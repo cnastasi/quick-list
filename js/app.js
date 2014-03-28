@@ -72,9 +72,14 @@ app.controller("TodoController",function($scope,TodoListService, Geolocalization
             //alert('Lat: ' + position.coords.latitude + ' Long: ' + position.coords.longitude);
             //url = "https://www.google.it/maps?t=m&ll=" + position.coords.latitude + "," + position.coords.longitude + "&z=20&output=classic";
 
-            text = 'Lat: ' + position.coords.latitude + ' Long: ' + position.coords.longitude;
+            //text = 'Lat: ' + position.coords.latitude + ' Long: ' + position.coords.longitude;
 
-            $scope.todos.push({text: text, done: false, type:'location'}); 
+            $scope.todos.push({
+              longitude: position.coords.longitude, 
+              latitude: position.coords.latitude,
+              type:'location'
+            });
+             
             $scope.$apply();
 
             TodoListService.save($scope.todos);
