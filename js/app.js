@@ -1,4 +1,4 @@
-var app = angular.module("FirefoxOSApp", []);
+var app = angular.module("quicklist", []);
 
 
 app.factory("StorageService",function(){
@@ -21,23 +21,28 @@ app.factory("StorageService",function(){
   };
 });
 
-app.factory("TodoListService",function($scope,StorageService){
+app.factory("TodoListService",function(StorageService){
   return{
-    save: function(){
-        StorageService.set("TodoList",$scope.todos);
+    save: function(data){
+        StorageService.set("TodoList",data);
     },
     load: function(){
-        StorageService.get("TodoList");
+        return StorageService.get("TodoList");
     }
   };
 });
 
 app.controller("TodoController",function($scope,TodoListService){
-    
+    try{
+      $scope.todos = TodoListService.load();
+    }
+    catch(error){
+      $scope.todos = [{text:'Fire',done:true}];
+    }
     $scope.addTodo = function() {
       $scope.todos.push({text:$scope.todoText, done:false});
       $scope.todoText = '';
-      TodoListService.save();
+      TodoListService.save($scope.todos);
     };
 
     $scope.archive = function() {
@@ -46,13 +51,13 @@ app.controller("TodoController",function($scope,TodoListService){
       angular.forEach(oldTodos, function(todo) {
         if (!todo.done) $scope.todos.push(todo);
       });
-      TodoListService.save();
+      TodoListService.save($scope.todos);
     };
 
     $scope.deleteTodo = function($index) {
       console.log($index);
       $scope.todos.splice($index,1);
-      TodoListService.save();
+      TodoListService.save($scope.todos);
     };
 
 });
