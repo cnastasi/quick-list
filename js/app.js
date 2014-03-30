@@ -7,7 +7,7 @@ app.config(function($routeProvider) {
     controller: 'TodoController'
   });
 
-  $routeProvider.when('/map', {
+  $routeProvider.when('/map/:selectedTodo', {
     templateUrl: 'map.html',
     controller: 'MapController'
   });
@@ -137,19 +137,20 @@ app.controller("TodoController",function($scope,TodoListService, Geolocalization
 });
 
 
-app.controller("MapController",function($scope){
+app.controller("MapController",function($scope,$routeParams,StorageService){
+  var selectedTodo = StorageService.get("TodoList")[$routeParams.selectedTodo];
   $scope.map = { 
       center: { 
-        latitude: 45.4707587, 
-        longitude: 9.2186091
+        latitude: selectedTodo.latitude, 
+        longitude: selectedTodo.longitude
       }, 
       zoom: 17
     };
 
     $scope.marker = {
       position : {
-        latitude: 45.4707587, 
-        longitude: 9.2186091
+        latitude: selectedTodo.latitude, 
+        longitude: selectedTodo.longitude
       }
     };
 });

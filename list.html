@@ -15,7 +15,7 @@
         <ul data-type="edit">
          <li ng-repeat = "todo in todos">
           
-          <label class="pack-checkbox danger">
+          <label class="pack-checkbox danger" ng-show="todo.type == 'text'">
             <input type="checkbox" ng-model="todo.done">
               <span class="done-{{todo.done}}"></span>
           </label>
@@ -24,7 +24,7 @@
             <p>{{todo.text}}</p>
           </a>
           
-          <a href="/list/:{{$index}}" ng-show="todo.type == 'location'">
+          <a href="#map/{{$index}}" ng-show="todo.type == 'location'">
             <p>Go to map</p>
           </a>
 
