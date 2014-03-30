@@ -44,3 +44,14 @@ html, body {
 	width: 30rem;
 	height: 30rem; 
 }
+#pointer{
+    position: absolute;
+    top: 0.6rem;
+    bottom: 0rem;
+    right: 0rem;
+    left: -4rem;
+    z-index: 1;
+    width: auto;
+    height: auto;
+    color: green;
+}

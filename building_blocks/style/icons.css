@@ -80,6 +80,7 @@
 }
 .icon-gps::before {
   content: "\e015";
+  color:green;
 }
 .icon-languages::before {
   content: "\e016";

@@ -19,13 +19,14 @@
             <input type="checkbox" ng-model="todo.done">
               <span class="done-{{todo.done}}"></span>
           </label>
+
+          <a href="#map/{{$index}}" ng-show="todo.type == 'location'">
+            <span class="icon icon-gps" id ="pointer"></span>
+            <p>Location {{$index + 1}}</p>
+          </a>
           <!-- Andrebbe usato ng-if anzichè ng-show -->
           <a href="#" ng-show="todo.type == 'text'">
             <p>{{todo.text}}</p>
-          </a>
-          
-          <a href="#map/{{$index}}" ng-show="todo.type == 'location'">
-            <p>Go to map</p>
           </a>
 
           <aside class="pack-end">
