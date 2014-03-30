@@ -1,22 +1,21 @@
-var app = angular.module("quicklist", []);
+var app = angular.module("quicklist", ["google-maps"]);
 
 app.config(function($routeProvider) {
 
-  $routeProvider.when('/home', {
+  $routeProvider.when('/list', {
     templateUrl: 'index.html',
     controller: 'TodoController'
   });
 
-  $routeProvider.when('/map', {
+  $routeProvider.when('/list/:selectedTask', {
     templateUrl: 'map.html',
     controller: 'MapController'
   });
-  
 
-  $routeProvider.otherwise({ redirectTo: '/login' });
+  $routeProvider.otherwise({ redirectTo: '/list' });
 
 });
-
+//Services-----------------------------------------------------------------
 app.factory("StorageService",function(){
   return{
     set: function(key,value){
@@ -61,7 +60,6 @@ app.factory("TodoListService",function(StorageService){
 
         }
           
-          
         StorageService.set("TodoList", list);
     },
     load: function(){
@@ -69,6 +67,17 @@ app.factory("TodoListService",function(StorageService){
     }
   };
 });
+
+app.factory("GeolocalizationService",function(StorageService){
+  return{
+    getPosition: function(success, fail){
+      navigator.geolocation.getCurrentPosition(success, fail);
+    }
+  };
+});
+
+//controllers-----------------------------------------------------------------------
+
 
 app.controller("TodoController",function($scope,TodoListService, GeolocalizationService) {
     try{
@@ -86,11 +95,7 @@ app.controller("TodoController",function($scope,TodoListService, Geolocalization
       $scope.text = '';
       TodoListService.save($scope.todos);
     };
-
-    $scope.isText = function (item) {
-      return item == "text";
-    };
-
+    
     $scope.geolocalize = function () {
         GeolocalizationService.getPosition (function (position){
             //console.log (position);
@@ -130,16 +135,22 @@ app.controller("TodoController",function($scope,TodoListService, Geolocalization
     };
 
 });
-/**
-app.directive("ListItem", function (){
-    return {
-        restrict: "A",
-        link: function (scope, element, attribute) {
-          element.text (JSON.stringify(scope));
-          //if (scope.type === 'text') {
 
-          //}
-        }
+
+app.controller("MapController",function($scope,$routeProvider){
+  $scope.map = { 
+      center: { 
+        latitude: 45.4707587, 
+        longitude: 9.2186091
+      }, 
+      zoom: 17
+    };
+
+    $scope.marker = {
+      position : {
+        latitude: 45.4707587, 
+        longitude: 9.2186091
+      },
+      title : "Your Car"
     };
 });
-*/

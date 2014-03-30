@@ -40,3 +40,7 @@ html, body {
 	background-position: center;
 	transform:rotate(45deg);
 }
+.angular-google-map-container { 
+	width: 20rem;
+	height: 20rem; 
+}

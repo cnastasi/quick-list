@@ -1,0 +1,38 @@
+
+      <section role="region">
+        <header>
+          <menu type="toolbar">
+            <a ng-click="geolocalize()">gps</a>
+            <a ng-click="addTodo()"><span class="icon icon-add">user</span></a>
+            
+          </menu>
+          <form action="#">
+            <input type="text" placeholder="Add new task" required="required" ng-model="text">
+          </form>
+        </header>
+      </section>
+      <section data-type="list">
+        <ul data-type="edit">
+         <li ng-repeat = "todo in todos">
+          
+          <label class="pack-checkbox danger">
+            <input type="checkbox" ng-model="todo.done">
+              <span class="done-{{todo.done}}"></span>
+          </label>
+          <!-- Andrebbe usato ng-if anzichè ng-show -->
+          <a href="#" ng-show="todo.type == 'text'">
+            <p>{{todo.text}}</p>
+          </a>
+          
+          <a href="/list/:{{$index}}" ng-show="todo.type == 'location'">
+            <p>Go to map</p>
+          </a>
+
+          <aside class="pack-end">
+            <button ng-click="deleteTodo($index)">
+                <div></div>
+            </button>
+          </aside>
+         </li>
+        </ul>
+    </section>
