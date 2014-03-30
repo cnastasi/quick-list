@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>My App</title>
-
+    <meta name="viewport" content="width=device-width, user-scalable=no">
     <!-- App styles -->
     <link rel="stylesheet" type="text/css" href="style/app.css">
     <link href="building_blocks/style/headers.css" rel="stylesheet" type="text/css">
@@ -11,18 +11,18 @@
     <link href="building_blocks/style/icons.css" rel="stylesheet" type="text/css">
     <link href="building_blocks/style/switches.css" rel="stylesheet" type="text/css">
     <link href="building_blocks/style/lists.css" rel="stylesheet" type="text/css">
+    <!-- Load Map -->
+    <script src='//maps.googleapis.com/maps/api/js?key=AIzaSyBlWRvQSz61fIJn6ckuFEf7I0Q-4_z0A34&sensor=false'>
+    </script>
     <!-- App Scripts -->
     <script defer src="js/angular.js"></script>
     <script defer src="js/underscore-min.js"></script>
     <script defer src="js/angular-google-maps.js"></script>
     <!-- App Core Script -->
     <script defer src="js/app.js"></script>
-     <!-- Load Map -->
-    <script src='//maps.googleapis.com/maps/api/js?key=AIzaSyBlWRvQSz61fIJn6ckuFEf7I0Q-4_z0A34&sensor=false'></script>
-    <meta name="viewport" content="width=device-width, user-scalable=no">
   </head>
   <body>
-    <ng-view>
+    <ng-view id="view">
     </ng-view>
   </body>
 </html>

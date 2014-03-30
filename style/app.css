@@ -41,6 +41,6 @@ html, body {
 	transform:rotate(45deg);
 }
 .angular-google-map-container { 
-	width: 20rem;
-	height: 20rem; 
+	width: 30rem;
+	height: 30rem; 
 }

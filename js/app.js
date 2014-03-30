@@ -3,11 +3,11 @@ var app = angular.module("quicklist", ["google-maps"]);
 app.config(function($routeProvider) {
 
   $routeProvider.when('/list', {
-    templateUrl: 'index.html',
+    templateUrl: 'list.html',
     controller: 'TodoController'
   });
 
-  $routeProvider.when('/list/:selectedTask', {
+  $routeProvider.when('/map', {
     templateUrl: 'map.html',
     controller: 'MapController'
   });
@@ -137,7 +137,7 @@ app.controller("TodoController",function($scope,TodoListService, Geolocalization
 });
 
 
-app.controller("MapController",function($scope,$routeProvider){
+app.controller("MapController",function($scope){
   $scope.map = { 
       center: { 
         latitude: 45.4707587, 
@@ -150,7 +150,6 @@ app.controller("MapController",function($scope,$routeProvider){
       position : {
         latitude: 45.4707587, 
         longitude: 9.2186091
-      },
-      title : "Your Car"
+      }
     };
 });
